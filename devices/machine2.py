@@ -10,7 +10,7 @@ from skimage.metrics import structural_similarity as ssim
 
 # Cấu hình ThingsBoard
 THINGSBOARD_HOST = "app.coreiot.io"  # Thay bằng hostname của bạn
-ACCESS_TOKEN = "ZfAO9lxFLkRdKbytaaCu"
+ACCESS_TOKEN = "your_access_token"  # Thay bằng access token của bạn
 THINGSBOARD_URL_IMAGE = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes?clientKeys=image"
 HEADERS = {'Content-Type': 'application/json'}
 

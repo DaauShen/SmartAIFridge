@@ -8,7 +8,10 @@ import numpy as np
 from ultralytics import YOLO  # Thư viện YOLO
 
 # Cấu hình ThingsBoard
-THINGSBOARD_URL = "http://app.coreiot.io/api/v1/your_access_token/attributes"
+THINGSBOARD_HOST = "app.coreiot.io"  # Thay bằng hostname của bạn
+ACCESS_TOKEN = "your_access_token"  # Thay bằng access token của bạn
+# Đường dẫn gửi ảnh tới ThingsBoard
+THINGSBOARD_URL = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes"
 
 # Cấu hình stream từ ESP32-CAM
 STREAM_URL = "http://192.168.1.121:81/stream"
