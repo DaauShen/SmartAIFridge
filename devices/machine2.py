@@ -15,6 +15,7 @@ ACCESS_TOKEN = "your_access_token"  # Thay bằng access token của bạn
 THINGSBOARD_URL_IMAGE = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes?clientKeys=image"
 THINGSBOARD_URL_ATTRIBUTES = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes?clientKeys=object_counts,temperature,humidity"
 
+HEADERS = {'Content-Type': 'application/json'}
 
 # Thư mục lưu ảnh nhận được
 SAVE_DIR = "received_images"
