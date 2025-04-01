@@ -2,6 +2,7 @@ import requests
 import cv2
 import base64
 import json
+import os
 from datetime import datetime
 import time
 import numpy as np
@@ -10,15 +11,18 @@ from ultralytics import YOLO  # Thư viện YOLO
 # Cấu hình ThingsBoard
 THINGSBOARD_HOST = "app.coreiot.io"  # Thay bằng hostname của bạn
 ACCESS_TOKEN = "your_access_token"  # Thay bằng access token của bạn
-# Đường dẫn gửi ảnh tới ThingsBoard
 THINGSBOARD_URL = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes"
 
 # Cấu hình stream từ ESP32-CAM
-STREAM_URL = "http://192.168.1.121:81/stream"
+STREAM_URL = "http://172.20.10.5:81/stream"
 
 # Load YOLO model
 MODEL_PATH = "model/last.pt"
 model = YOLO(MODEL_PATH)
+
+# Thư mục lưu ảnh
+SAVE_DIR = "pub_pics"
+os.makedirs(SAVE_DIR, exist_ok=True)  # Tạo thư mục nếu chưa tồn tại
 
 def get_frame_from_stream():
     """Lấy frame từ ESP32-CAM"""
@@ -39,20 +43,29 @@ def get_frame_from_stream():
         return None
 
 def detect_objects(image):
-    """Chạy YOLO detection trên ảnh và vẽ bounding box + label"""
+    """Chạy YOLO detection và đếm số lượng đối tượng"""
     results = model(image)[0]  # Nhận diện bằng model
-    
+    object_counts = {}  # Dictionary để lưu số lượng từng loại đối tượng
+
     for box, conf, cls in zip(results.boxes.xyxy, results.boxes.conf, results.boxes.cls):
         x1, y1, x2, y2 = map(int, box)  # Toạ độ bounding box
-        label = f"{model.names[int(cls)]} ({conf:.2f})"  # Lấy tên vật thể và độ chính xác
+        label = model.names[int(cls)]  # Lấy tên vật thể
+        object_counts[label] = object_counts.get(label, 0) + 1  # Đếm số lượng
 
         # Vẽ bounding box
         cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
         # Hiển thị label
-        cv2.putText(image, label, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
-    
-    return image
+        cv2.putText(image, f"{label} ({conf:.2f})", (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+
+    return image, object_counts
+
+def save_image(image):
+    """Lưu ảnh vào thư mục pub_pics với tên theo timestamp"""
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"{SAVE_DIR}/detected_obj.jpg"
+    cv2.imwrite(filename, image)  # Lưu ảnh
+    return filename  # Trả về đường dẫn ảnh
 
 def encode_image_to_base64(image):
     """Chuyển ảnh thành base64"""
@@ -60,20 +73,21 @@ def encode_image_to_base64(image):
     img_base64 = base64.b64encode(buffer).decode('utf-8')
     return img_base64
 
-def send_image_to_thingsboard(session, image_base64):
-    """Gửi ảnh dưới dạng base64 tới ThingsBoard qua HTTP POST"""
+def send_data_to_thingsboard(session, image_base64, object_counts):
+    """Gửi ảnh và số lượng đối tượng lên ThingsBoard"""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     payload = {
         "image": image_base64,
-        "timestamp": timestamp
+        "timestamp": timestamp,
+        "object_counts": object_counts  # Gửi danh sách số lượng từng loại đối tượng
     }
     headers = {'Content-Type': 'application/json'}
     try:
         response = session.post(THINGSBOARD_URL, headers=headers, data=json.dumps(payload))
         if response.status_code == 200:
-            print("Ảnh đã gửi lên ThingsBoard!")
+            print("Dữ liệu đã gửi lên ThingsBoard!")
         else:
-            print(f"Lỗi gửi ảnh: {response.status_code} - {response.text}")
+            print(f"Lỗi gửi dữ liệu: {response.status_code} - {response.text}")
     except Exception as e:
         print(f"Lỗi kết nối tới ThingsBoard: {e}")
 
@@ -83,12 +97,18 @@ def main():
             frame = get_frame_from_stream()
             if frame is not None:
                 frame = cv2.resize(frame, (800, 600), interpolation=cv2.INTER_LINEAR)
-                frame = detect_objects(frame)  # Chạy YOLO nhận diện
+                frame, object_counts = detect_objects(frame)  # Chạy YOLO nhận diện và đếm số lượng
+                
+                # Lưu ảnh vào thư mục pub_pics
+                image_path = save_image(frame)
+                print(f"Ảnh đã lưu tại: {image_path}")
+
+                # Mã hóa ảnh thành base64 để gửi lên ThingsBoard
                 img_base64 = encode_image_to_base64(frame)
-                send_image_to_thingsboard(session, img_base64)
+                send_data_to_thingsboard(session, img_base64, object_counts)
             else:
                 print("Không lấy được frame, thử lại...")
-            time.sleep(1)  # Gửi ảnh mỗi 0.5 giây
+            time.sleep(1)  # Gửi ảnh mỗi giây
 
 if __name__ == "__main__":
     main()
