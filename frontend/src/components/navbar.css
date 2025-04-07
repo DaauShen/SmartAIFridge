@@ -1,0 +1,104 @@
+.navigation-bar {
+    background-color: #ffffff;
+    height: 8.17%;
+    position: fixed;
+    width: 100%;
+    /* justify-content: center; */
+    align-items: center;
+    display: flex;
+    top:0;
+    left:0;
+    right:0;
+  }
+  
+  .navigation-bar .sign-in-button {
+    background-color: #2c2c2c;
+    left: 82.73%;
+    /* overflow: hidden; */
+    position: absolute;
+    top: 20%;
+    height:60%;
+    width: 5%;
+    border-radius: 10%;
+    color:#ffffff;
+    display: flex;
+    justify-content: center;
+    font-family:  "Inter", Helvetica;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  
+  .navigation-bar .button {
+    all: unset;
+    box-sizing: border-box;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .navigation-bar .register-button {
+    background-color: #f5f5f5;
+    left: 89%;
+    position: absolute;
+    top: 20%;
+    height:60%;
+    width: 5%;
+    border-radius: 10%;
+    color:#2c2c2c;
+    display: flex;
+    justify-content: center;
+    font-family:  "Inter", Helvetica;
+    font-weight: 700;
+    font-size: 14px;
+
+  }
+  
+  .navigation-bar .text-wrapper {
+    all: unset;
+    box-sizing: border-box;
+    margin-top: -1.00px;
+    position: relative;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .navigation-bar .div {
+    color: #000000;
+    font-family:  "Inter", Helvetica;
+    font-weight: 500;
+    font-size: 16px;
+    left: 57%;
+    
+    position:relative;
+
+  }
+  
+  .navigation-bar .text-wrapper-2 {
+    color: #000000;
+    font-family:  "Inter", Helvetica;
+    font-weight: 500;
+    font-size: 16px;
+    left: 60%;
+
+    position: relative;
+  }
+  
+  .navigation-bar .text-wrapper-3 {
+    color: #000000;
+    font-family:  "Inter", Helvetica;
+    font-weight: 500;
+    font-size: 16px;
+    left: 63%;
+
+    position: relative;
+
+  }
+  
+  .navigation-bar .logo-smf-instance {
+    left: 29px !important;
+    position: absolute !important;
+    top: 6px !important;
+  }
+  
+  
