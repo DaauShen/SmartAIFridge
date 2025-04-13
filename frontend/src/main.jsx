@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import NavigationBar from './components/navbar';
+import NavBar2 from './components/navbar2';
 import Footer from './components/footer'
 
 const App = () => {
   return (
     <div>
-      <NavigationBar />
+      <NavBar2 />
       <Footer />
     </div>
   );
