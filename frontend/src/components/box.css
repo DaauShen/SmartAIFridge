@@ -1,0 +1,170 @@
+*{
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+}
+.box {
+    display: block;
+    height: 350px;
+    width: 509.9px;
+    background-color: #ffffff;
+    position:absolute;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px 0 black;
+    top: 85px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.box .title {
+    position: absolute;
+    display: block;
+    left: 30.37px;
+    top: 25.31px;
+    font-weight: 700;
+    font-size: 21.69px;
+    line-height: 14.5px;
+}
+
+.box .accountbox .input{
+    position: absolute;
+    left: 30.47px;
+    top: 51.34px;
+}
+
+.box .passwordbox .input{
+    position: absolute;
+    left: 30.47px;
+    top: 130.17px;
+}
+
+.box .rememberme {
+    position: absolute;
+    left: 30.47px;
+    top: 211.88px;
+    line-height: 17.4px;
+
+}
+
+.box .donthave {
+    position: absolute;
+    left: 30.37px;
+    top: 239.81px;
+
+}
+.donthave a{
+    all: unset;
+}
+
+.box .button {
+    display: block;
+    position: absolute;
+    left: 30.37px;
+    top: 285.64px;
+    width: 145px;
+    height: 35px;
+    border-radius: 3.62px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+
+}
+.button:hover{
+    background-color: #444444;
+    transform: scale(1.05);
+}
+.input .text{
+    font-size: 13.2px;
+    line-height: 17.4px;
+    position: absolute;
+    left: 0px;
+    top: 7.23px;
+}
+
+.input .inbox{
+    display: block;
+    background-color: #ffffff;
+    border: solid 1px #000000;
+    position: absolute;
+    left: 0px;
+    top: 32.46px;
+    width: 448px;
+    height: 36px;
+    border-radius: 3.62px;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    font-size: 16px;       
+}
+
+.inbox:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* @media (orientation: portrait) {
+    .box{
+        top: 250px;
+    }
+} */
+/* 
+@media (max-width: 550px) {
+    .box{
+        transform: scale(0.5);
+    }
+}
+
+@media (max-width: 420px) {
+    .box{
+        transform: scale(0.7);
+    }
+}
+
+@media (max-width: 370px) {
+    .box{
+        transform: scale(0.6);
+    }
+}
+
+@media (max-width: 320px) {
+    .box{
+        transform: scale(0.5);
+    }
+} */
+
+@media (max-width: 550px) {
+    .box {
+        transform: translateX(-50%) scale(0.8);
+    }
+}
+
+@media (max-width: 420px) {
+    .box {
+        transform: translateX(-50%) scale(0.7);
+    }
+}
+
+@media (max-width: 370px) {
+    .box {
+        transform: translateX(-50%) scale(0.6);
+    }
+}
+
+@media (max-width: 320px) {
+    .box {
+        transform: translateX(-50%) scale(0.5);
+    }
+}
+
+@media (orientation: landscape) and (max-height: 690px) {
+    .box {
+        transform: translateX(-50%) scale(0.8);
+    }
+}
+
+@media (orientation: landscape) and (max-height: 660px) {
+    .box {
+        transform: translateX(-50%) scale(0.7);
+        top: 45px;
+    }
+}

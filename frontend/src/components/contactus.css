@@ -1,0 +1,122 @@
+*{
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+}
+.contactbox{
+    display: block;
+    width: 500px;
+    height: 350px;
+    box-shadow: 0 4px 8px 0;
+    position: absolute;
+    left: 54px;
+    top: 100px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    /* transform: translateY(-50%); */
+}
+
+.contactbox .title {
+    position: absolute;
+    left: 164.14px;
+    top: 8.85px;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 16.7px;
+}
+
+.input .text{
+    font-size: 15px;
+    line-height: 20px;
+    position: absolute;
+    left: 0px;
+    top: 7.23px;
+    font-weight: bold;
+}
+
+.input .inbox{
+    display: block;
+    background-color: #ffffff;
+    border: solid 1px #000000;
+    position: absolute;
+    left: 0px;
+    top: 32.46px;
+    width: 448px;
+    height: 36px;
+    border-radius: 3.62px;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    font-size: 16px;       
+}
+
+.inbox:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+.contactbox .name .input{
+    position: absolute;
+    left: 30.83px;
+    top: 33.33px;
+}
+
+.contactbox .email .input{
+    position: absolute;
+    left: 30.83px;
+    top: 100.83px;
+}
+
+.contactbox .message .input{
+    position: absolute;
+    left: 30.83px;
+    top: 171.67px;
+}
+
+.contactbox .message .input .inbox{
+    height: 95px;
+}
+
+.contactbox .message2 .input{
+    position: absolute;
+    left: 31.67px;
+    top: 45px;
+}
+
+.contactbox .message2 .input .inbox{
+    height: 200px;
+}
+
+.contactbox .button {
+    display: block;
+    position: absolute;
+    left: 180px;
+    top: 308.13px;
+    width: 161.67px;
+    height: 30px;
+    border-radius: 3.62px;
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 700;
+}
+.button:hover{
+    background-color: #444444;
+    transform: scale(1.05);
+}
+
+@media (orientation: landscape) and (max-height: 700px) {
+    .contactbox{
+        transform: scale(0.8);
+        top: 80px;
+    }
+}
+
+@media (orientation: portrait) {
+    .contactbox{
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 120px;
+    }
+}
+
