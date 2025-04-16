@@ -1,19 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import NavBar2 from './components/navbar2';
-import NavBar1 from './components/navbar';
-import Footer from './components/footer'
-import SignInBox from './components/signin';
-import SignUpBox from './components/signup';
-import ContactUs from './components/contactus';
-import ContactUs2 from './components/contactus2';
+import SignInPage from './pages/loginpage';
+import SignUpPage from './pages/signup';
 const App = () => {
   return (
-    <div>
-      <NavBar1 />
-      <ContactUs2/>
-      <Footer />
-    </div>
+    <SignUpPage/>
   );
 };
 
