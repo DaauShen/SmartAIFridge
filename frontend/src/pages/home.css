@@ -6,9 +6,9 @@
     background-color: #EAF7EA;
     height: 1840px;
 }
-.footer{
+/* .footer{
     top: 1690px;
-}
+} */
 .background{
     
     background-image: url("../assets/images/homebackground.png");
@@ -225,4 +225,61 @@
       -webkit-text-stroke: 1px black;
       background-clip: text;
       color: transparent;
+}
+
+.contactpage img{
+    position: absolute;
+    margin: auto auto;
+    left: 0;
+    right: 0;
+    top: 600px;
+    /* bottom: 0; */
+   
+}
+/* .contactpage .title{
+    position: absolute;
+    left: 800px;
+    top: 250px;
+    font-size: 32px;
+    color:#000;
+    font-weight: 700;
+} */
+
+
+.aboutus img{
+    position: absolute;
+    top: 100px;
+    left: 100px;
+}
+
+.aboutus .faculty{
+    position: absolute;
+    top: 120px;
+    left: 781px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #030391;
+}
+
+.aboutus .team{
+    position: absolute;
+    top: 250px;
+    /* margin: 0 auto;
+    left: 0;
+    right: 0; */
+    font-size: 16px;
+    font-weight: bold;
+    color: #030391;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.aboutus .teammem img{
+    position: absolute;
+    top: 250px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    /* transform: scale(1.5); */
 }

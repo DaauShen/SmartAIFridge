@@ -1,9 +1,9 @@
 import NavBar1 from "../components/navbar";
-import Footer from "../components/footer";
+// import Footer from "../components/footer";
 import img from "../assets/images/homepageimage.png"
 import React from "react";
 import "./home.css"
-
+import HomeFooter from "../components/homefooter";
 
 function HomePage(){
     return (
@@ -32,7 +32,7 @@ function HomePage(){
                         <div className="attr">  efficiently                                    faster                                   efficiently   </div>
                     </div>
                 </div>
-                <Footer/>
+                <HomeFooter />
             </div>
         )
 }
