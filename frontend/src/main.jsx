@@ -7,6 +7,7 @@ import SignInBox from './components/signin';
 import SignUpBox from './components/signup';
 import ContactUs from './components/contactus';
 import ContactUs2 from './components/contactus2';
+
 const App = () => {
   return (
     <div>
