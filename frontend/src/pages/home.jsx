@@ -4,7 +4,7 @@ import Footer from '../components/footer';
 import '../assets/styles/home.css';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+function HomePage(){
   return (
     <div className="home-page">
 
@@ -61,4 +61,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
