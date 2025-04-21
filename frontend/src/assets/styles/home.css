@@ -1,0 +1,70 @@
+.home-page {
+    font-family: Arial, sans-serif;
+  }
+  
+  .image-section {
+    background: url('/image.png') center/cover no-repeat;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hero-title {
+    color: white;
+    font-size: 3rem;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+  }
+  
+  .green-section {
+    background-color: #e6f5ea;
+    padding: 3rem 2rem;
+    border-radius: 30px;
+    margin: 2rem auto;
+    width: 85%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .our-system {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 3rem;
+  }
+  
+  .system-img img {
+    width: 250px;
+    border-radius: 15px;
+  }
+  
+  .aboutus-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1.2rem;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .tracking {
+    text-align: center;
+  }
+  
+  .tracking-grid {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+  }
+  
+  .tracking-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 150px;
+  }
+  
