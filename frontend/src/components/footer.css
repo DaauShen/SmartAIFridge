@@ -5,11 +5,14 @@
 .footer {
   background-color: #ffffff;
   height: 250px;
-  position: fixed;
-  width: 100%; /* Ensures footer spans the full width of the screen */
+
+  position: absolute;
+  top: 100%;
+  width: 100%;
   left: 0;
-  bottom: 0;
+  /* bottom: 0; */
 }
+
 .footer .copyright {
 
   font-size: 16px;

@@ -10,7 +10,8 @@
     position:absolute;
     border-radius: 10px;
     box-shadow: 0 2px 4px 0 black;
-    top: 85px;
+
+    top: 200px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1;
