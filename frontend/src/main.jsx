@@ -7,7 +7,7 @@ import ContactUsPage from './pages/contact';
 import AboutUsPage from './pages/aboutus';
 const App = () => {
   return (
-    <AboutUsPage/>
+    <HomePage/>
   );
 };
 
