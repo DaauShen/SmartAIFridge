@@ -1,0 +1,80 @@
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-family:  "Inter", Helvetica;
+
+}
+.popupbox{
+    width: 424px;
+    height: 254px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #fff;
+    display: flex;
+    box-shadow: 0 2px 4px 0 black;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    position: relative;
+}
+
+.popupbox .title{
+    display: flex;
+    position: absolute;
+    top: 19px;
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.popupbox .getval{
+    display: block;
+    top: 58px;
+    width: 326px;
+    height: 109px;
+    position: absolute;
+    /* background-color: black; */
+}
+
+.getval .name{
+    display: block;
+    top: 10px;
+    position: absolute;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+
+.getval .inbox{
+    display: block;
+    position: absolute;
+    top: 44px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #fff;
+    width: 100%;
+    height: 50px;
+    line-height: 48px;
+    font-size: 30px;
+}
+
+.popupbox .butt{
+    display: block;
+    position: absolute;
+    top: 185px;
+
+    height: 36px;
+    width: 126px;
+    background-color: black;
+    border-radius: 10px;
+
+    color: #fff;
+    font-size: 16px;
+}
+
+.butt:hover{
+    background-color: #444444;
+    transform: scale(1.05);
+}
