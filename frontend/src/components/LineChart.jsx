@@ -29,8 +29,8 @@ export default function LineChartComponent() {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="temperature" stroke="#ff7300" name="Nhiệt độ (°C)" />
-        <Line type="monotone" dataKey="humidity" stroke="#387908" name="Độ ẩm (%)" />
+        <Line type="monotone" dataKey="temperature" stroke="#ff7300" name="Temperature (°C)" />
+        <Line type="monotone" dataKey="humidity" stroke="#387908" name="Humidity (%)" />
       </Chart>
       <button className='butt'>Close</button>
       </div>
