@@ -1,0 +1,110 @@
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter-Regular", Helvetica;
+}
+
+body {
+  font-family: "Inter-Regular", Helvetica;
+  background-color: #F1F8F2;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 cột cho các sản phẩm */
+  gap: 30px;
+  width: 90%;
+  margin: 50px 30px;
+}
+
+/* Image */
+
+.container .image-container{
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} 
+
+.image-container .fridge-image {
+  width: 70%;
+  border-radius: 10px;
+  margin-top: 10%;
+  margin-bottom: 2%;
+  justify-content: left;
+}
+
+/* Tables */
+
+.container .display-table {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 cột cho các sản phẩm */
+    gap: 30px;
+    width: 90%;
+    margin: 50px 15px;
+  }
+
+.vegetable-table,
+.dish-table {
+  padding-top: 50px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 5px;
+} 
+
+.vegetable-table {
+  width: 100%;
+  margin: 0 15px;
+}
+
+.dish-table {
+    width: 100%;
+    margin: 0 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    font-size: 18px;
+    padding: 10px 15px;
+    border: solid #040303;
+    justify-content: center;
+    text-align: center;
+}
+
+th {
+    color: white;
+    background-color: black;
+}
+
+td {
+    color: black;
+    background-color: white;
+}
+
+.vegetable-table .see-btn {
+  padding: 5px 25px;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.vegetable-table .see-btn:hover {
+  background-color: #858788;
+}
+
