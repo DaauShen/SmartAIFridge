@@ -6,10 +6,14 @@ import SignUpPage from './pages/signup';
 import HomePage from "./pages/home"
 import ContactUsPage from './pages/contact';
 import AboutUsPage from './pages/aboutus';
-
+import Fridge from './pages/fridge';
+import Dashboard from './pages/dashboard';
+import PopUpBox from './components/popupbox';
+import LineChartComponent from './components/LineChart';
 const App = () => {
   return (
-    <AboutUsPage/>
+    // <PopUpBox name="Humidity"/>
+    <LineChartComponent/>
   );
 };
 
