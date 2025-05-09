@@ -1,6 +1,9 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./box.css"
 function SignUpBox(){
+    const navigate = useNavigate();
+
     return (
         <div className="box">
             <div className="title">Sign up</div>
@@ -18,8 +21,8 @@ function SignUpBox(){
                 </div>
             </div>
 
-            <div className="donthave">Already have an account? <a href="#">Log in</a></div>
-            <button className="button">Sign up</button>
+            <div className="donthave">Already have an account? <Link style={{textDecoration: "underline", cursor: "pointer"}} to="/signin">Log in</Link></div>
+            <button className="button" onClick = {() => navigate("/signin")}>Sign up</button>
 
         </div>
     )

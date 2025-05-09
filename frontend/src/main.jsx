@@ -1,14 +1,12 @@
 import React from 'react';
+import { BrowserRouter } from "react-router-dom";
 import ReactDOM from 'react-dom/client';
+import { Link } from "react-router-dom";
+import App from './App';
 
-const App = () => {
-  return (
-    <HomePage/>
-  )
-  }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <BrowserRouter>
     <App />
-  </React.StrictMode>
+  </BrowserRouter>
 );

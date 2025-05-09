@@ -1,9 +1,9 @@
 import React from "react";
-import NavBar1 from "../components/navbar";
-import Footer from "../components/footer";
-import ContactUs from "../components/contactus"
-import "./home.css"
-import contact from "../assets/images/contact.png"
+import NavBar1 from "../../components/navbar";
+import Footer from "../../components/footer";
+import ContactUs from "../../components/contactus"
+import "../home/home.css"
+import contact from "../../assets/images/contact.png"
 function ContactUsPage(){
     return (
         <div>
