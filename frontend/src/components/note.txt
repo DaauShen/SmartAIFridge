@@ -1,0 +1,6 @@
+## THIS IS NOTE FOR COMPONENT ##
+author: Dinh Ba Khanh
+
+navbar 1: used for before login (we both have web and phone version)
+narbar 2: after login
+footer: page footer
