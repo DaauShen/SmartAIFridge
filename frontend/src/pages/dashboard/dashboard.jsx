@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import Popup from 'reactjs-popup';
 import "./dashboard.css";
 import Navbar2 from "../../components/navbar2";
@@ -10,7 +10,13 @@ import big_logo from "../../assets/images/big_logo.png"
 
 function Dashboard(){
     // Popup setting box
-    
+    const [img, setImg] = useState(null);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/api/images")
+        .then((res) => res.json())
+        .then((data) => setImg(data.base64));
+    }, []);
 
     // Fetch data from database 
     const timestamp = "TIMESTAMP";
@@ -20,7 +26,7 @@ function Dashboard(){
             <div className = "dashboard-container">
                 {/* Image: Realtime image */}
                 <div className = "image-container">
-                    <img src = {image} alt = "Smart Fridge" className = "fridge-image"></img>
+                    <img src = {`data:image/jpeg;base64,${img}`} alt = "Smart Fridge" className = "fridge-image"></img>
                     <p style={{fontStyle: "italic"}}>Updated at {timestamp}</p>
                     <button className = "go-to-fridge">Go to “Fridge”</button>
                 </div>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Popup from 'reactjs-popup';
 import "./fridge.css";
 import image from "../../../../devices/received_images/mypic.jpg";
@@ -6,7 +6,14 @@ import Navbar2 from "../../components/navbar2";
 import Footer from "../../components/footer";
 
 export default function Fridge(){
-    {/* fetch timestamp từ database */}
+    const [img, setImg] = useState(null);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/api/images")
+        .then((res) => res.json())
+        .then((data) => setImg(data.base64));
+    }, []);
+
     const timestamp = "TIMESTAMP";
     const vegetables = [
         { name: "Broccoli", quantity: 1},
@@ -26,7 +33,7 @@ export default function Fridge(){
             <div className = "fridge-container">
                 {/* Realtime image */}
                 <div className = "image-container">
-                    <img src = {image} alt = "Smart Fridge" className = "fridge-image"></img>
+                    {img && <img src={`data:image/jpeg;base64,${img}`} alt="IoT Image" className = "fridge-image" />}
                     <p style={{fontStyle: "italic"}}>Updated at {timestamp}</p>
                 </div>
 
