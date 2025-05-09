@@ -1,0 +1,101 @@
+.setting-box .popup-overlay {
+    position: fixed;
+    inset: 0px;
+    display: flex;
+    pointer-events: auto;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 999;
+}
+
+.setting-box .popupbox{
+    width: 424px;
+    height: 254px;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 black;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: auto;
+    display: flex;
+    z-index: 1000;
+}
+
+.setting-box .popupbox .title{
+    display: flex;
+    position: absolute;
+    top: 19px;
+    line-height: 24px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.setting-box .popupbox .getval{
+    display: block;
+    top: 58px;
+    width: 326px;
+    height: 109px;
+    position: absolute;
+}
+
+.setting-box .getval .name{
+    display: block;
+    top: 10px;
+    position: absolute;
+    font-size: 16px;
+    line-height: 24px;
+
+}
+
+.setting-box .getval .inbox{
+    display: block;
+    position: absolute;
+    top: 45px;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: #fff;
+    width: 100%;
+    height: 39px;
+    line-height: 48px;
+    font-size: 16px;
+}
+
+.setting-box .popupbox .popupbox-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 150px;
+}
+
+.setting-box .popupbox .popupbox-buttons .black-button, .popupbox .popupbox-buttons .white-button{
+    height: 36px;
+    width: 126px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.setting-box .popupbox .popupbox-buttons .black-button{
+    background-color: black;
+    color: #fff;
+}
+
+.setting-box .popupbox .popupbox-buttons .black-button:hover{
+    background-color: #444444;
+    transform: scale(1.05);
+}
+
+.setting-box .popupbox .popupbox-buttons .white-button{
+    background-color: white;
+    color: black;
+}
+
+.setting-box .popupbox .popupbox-buttons .white-button:hover{
+    background-color: #d4d4d4;
+    transform: scale(1.05);
+}
