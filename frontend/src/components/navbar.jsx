@@ -1,9 +1,12 @@
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./navbar1.css";
 import logo from "../assets/images/logo.png"
-function NavBar1(){
-  return (
 
+function NavBar1(){
+  const navigate = useNavigate();
+  
+  return (
     <div class='navbar'>
       {/* <button class="dropdown"><i class="material-icons">menu</i></button>
       <div class="dropblock"></div> */}
@@ -11,19 +14,19 @@ function NavBar1(){
         <button class="dropdownbutton"><i class="material-icons">menu</i></button>
         {/* <div class="dropblock"/> */}
         <div class="dropcontent">
-          <a href="#">HOME</a>
-          <a href="#">ABOUT US</a>
-          <a href="#">CONTACT</a>
+          <Link to="/">HOME</Link>
+          <Link to="/aboutus">ABOUT US</Link>
+          <Link to="/contactus">CONTACT</Link>
         </div>
       </div>
       <img src={logo} alt='Logo' class='logo'></img>
       <ul>
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">ABOUT US</a></li>
-        <li><a href="#">CONTACT</a></li>
+        <li><Link to="/">HOME</Link></li>
+        <li><Link to="/aboutus">ABOUT US</Link></li>
+        <li><Link to="/contactus">CONTACT</Link></li>
       </ul>
-      <button class="signin">Sign in</button>
-      <button class="register">Register</button>
+      <button class = "signin" onClick = {() => navigate("/signin")}>Sign in</button>
+      <button class = "register" onClick = {() => navigate("/signup")}>Register</button>
     </div>
     
   );
