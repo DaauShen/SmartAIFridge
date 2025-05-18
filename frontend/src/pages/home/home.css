@@ -4,11 +4,10 @@
 }
 .after{
     background-color: #EAF7EA;
-    height: 1840px;
+    height: auto;
 }
-/* .footer{
-    top: 1690px;
-} */
+
+
 .background{
     background-image: url("../../assets/images/homebackground.png");
     background-size: cover;
@@ -110,13 +109,14 @@
 
 .infobox{
     display: block;
-    position: absolute;
-    top: 911px;
+    position: relative;
+    top: -80px;
+    bottom: 0px;
     margin: 0 auto;
     left: 0;
     right: 0;
     width: 1075px;
-    height: 567px;
+    height: auto;
     border-radius: 10px;
 }
 
@@ -125,12 +125,12 @@
     background-color: white;
     height: 379px;
     width: 100%;
-    position: absolute;
+    position: relative;
     top: 0;
     border-radius: 10px;
 }
 .infobox .whitebox img{
-    position: absolute;
+    position: relative;
     left: 12px;
     top: 12.5px;
     border-radius: 10px;
@@ -179,10 +179,9 @@
 
 .infobox .transparentbox{
     display: block;
-    height: 188px;
+    height: auto;
     width: 100%;
-    position: absolute;
-    top: 379px;
+    position: relative;
 }
 
 .infobox .transparentbox .tracking{
@@ -232,9 +231,8 @@
     left: 0;
     right: 0;
     top: 600px;
-    /* bottom: 0; */
-   
 }
+
 /* .contactpage .title{
     position: absolute;
     left: 800px;

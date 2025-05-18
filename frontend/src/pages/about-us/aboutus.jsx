@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../../components/footer";
-import NavBar1 from "../../components/navbar";
+import Footer from "../../components/footer/footer";
+import NavBar1 from "../../components/navbar/navbar";
 import "../home/home.css"
 import BKU from "../../assets/images/BKU.png"
 import team from "../../assets/images/team.png"
