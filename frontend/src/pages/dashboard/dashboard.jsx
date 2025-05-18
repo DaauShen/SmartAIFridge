@@ -9,6 +9,7 @@ import LineChartComponent from "../../components/dashboard-popup/line-chart"
 import image from "../../../../devices/received_images/mypic.jpg";
 import big_logo from "../../assets/images/big_logo.png"
 
+
 function Dashboard(){
     const navigate = useNavigate();
     const [img, setImg] = useState(null);

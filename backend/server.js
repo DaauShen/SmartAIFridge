@@ -156,6 +156,7 @@ app.post("/api/register", async (req, res) => {
   res.status(201).json({ message: "Đăng ký thành công" });
 });
 
+
 // ĐĂNG NHẬP NGƯỜI DÙNG
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;
