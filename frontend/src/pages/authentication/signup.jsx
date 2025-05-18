@@ -1,6 +1,6 @@
-import Footer from "../../components/footer";
-import NavBar1 from "../../components/navbar";
-import SignUpBox from "../../components/signup"
+import Footer from "../../components/footer/footer";
+import NavBar1 from "../../components/navbar/navbar";
+import SignUpBox from "../../components/authentication/signup"
 import React from "react";
 
 function SignUpPage(){
