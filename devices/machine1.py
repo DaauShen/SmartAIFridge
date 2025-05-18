@@ -17,7 +17,7 @@ THINGSBOARD_URL = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes"
 STREAM_URL = "http://172.20.10.5:81/stream"
 
 # Load YOLO model
-MODEL_PATH = "model/last.pt"
+MODEL_PATH = "model/best.pt"
 model = YOLO(MODEL_PATH)
 
 # Thư mục lưu ảnh
