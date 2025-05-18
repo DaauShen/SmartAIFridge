@@ -22,12 +22,14 @@ export default function Fridge(){
 
     const timestamp = "TIMESTAMP";
 
+
     const vegetables = [
         { name: "Broccoli", quantity: 1},
         { name: "Bell Pepper", quantity: 3},
         { name: "Watermelon", quantity: 1},
         { name: "Lettuce", quantity: "Yes"}
     ];
+
 
     const dishes = [
         { name: "Dish 1"},
@@ -75,6 +77,12 @@ export default function Fridge(){
                                             >
                                                 {seeButton === index ? "Hide" : "See"}
                                             </button>
+                                            <button
+                                                className="see-btn"
+                                                onClick={() => setSeeButton(seeButton === index ? null : index)}
+                                            >
+                                                {seeButton === index ? "Hide" : "See"}
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}
@@ -82,6 +90,24 @@ export default function Fridge(){
                         </table>
                     </div>
                     {/* Dishes */}
+                    {seeButton !== null && (
+                        <div className="dish-table">
+                            <table>
+                                <thead>
+                                <tr>
+                                    <th>Dish</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {dishes.map((dish, index) => (
+                                        <tr key = {index}>
+                                            <td key = {index}>{dish.name}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    )}
                     {seeButton !== null && (
                         <div className="dish-table">
                             <table>
