@@ -61,7 +61,7 @@ body, html {
 
 /* Status */
 .dashboard-container .status{
-  padding-top: 80px;
+  padding-top: 50px;
   width: 100%;
   margin: 0 auto;
 } 
@@ -74,7 +74,7 @@ body, html {
   width: 225px;
   height: 128px;
   align-items: center;
-  margin: 0px auto 50px;
+  margin: 0px auto 30px;
   display: grid;
   grid-template-rows: 1fr 1fr;
 }

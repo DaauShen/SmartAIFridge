@@ -8,6 +8,7 @@
 #define LED_PIN GPIO_NUM_48
 #define SDA_PIN GPIO_NUM_11
 #define SCL_PIN GPIO_NUM_12
+#define FAN_PIN GPIO_NUM_10
 
 constexpr char WIFI_SSID[] = "iPhone Huytai102";
 constexpr char WIFI_PASSWORD[] = "0305667542";
@@ -25,8 +26,10 @@ constexpr char HUMIDITY_ATTR[] = "humidity";
 volatile bool attributesChanged = false;
 volatile bool ledState = false;
 float temperature = 0.0, humidity = 0.0;
+float temperature_Threshold = 10.0;
+float humidity_Threshold = 70.0;
 
-constexpr int16_t telemetrySendInterval = 10000U;
+constexpr int16_t telemetrySendInterval = 1000U;
 
 WiFiClient wifiClient;
 Arduino_MQTT_Client mqttClient(wifiClient);
@@ -36,6 +39,20 @@ DHT20 dht20;
 void taskThingsBoard(void *pvParameters);
 void taskDHT20(void *pvParameters);
 void taskSendAttribute(void *pvParameters);
+void taskFanControl(void *pvParameters);
+
+void SharedAttributeCallback(const Shared_Attribute_Data &data) {
+    if (data.containsKey("temperature_Threshold")) {
+        temperature_Threshold = data["temperature_Threshold"];
+        Serial.print("Updated temperature_Threshold: ");
+        Serial.println(temperature_Threshold);
+    }
+    if (data.containsKey("humidity_Threshold")) {
+        humidity_Threshold = data["humidity_Threshold"];
+        Serial.print("Updated humidity_Threshold: ");
+        Serial.println(humidity_Threshold);
+    }
+}
 
 void InitWiFi() {
     Serial.println("Connecting to WiFi...");
@@ -60,6 +77,7 @@ void setup() {
     xTaskCreate(taskThingsBoard, "TaskMQTT", 4096, NULL, 1, NULL);
     xTaskCreate(taskSendAttribute, "taskSendAttribute", 2048, NULL, 1, NULL);
     xTaskCreate(taskDHT20, "taskDHT20", 2048, NULL, 1, NULL);
+    xTaskCreate(taskFanControl, "taskFanControl", 2048, NULL, 1, NULL);
 }
 
 // Task 1: Quản lý kết nối đến ThingsBoard
@@ -69,6 +87,7 @@ void taskThingsBoard(void *parameter) {
       Serial.println("Connecting to ThingsBoard...");
       if (tb.connect(THINGSBOARD_SERVER, TOKEN, THINGSBOARD_PORT)) {
         Serial.println("Connected to ThingsBoard");
+        tb.Shared_Attributes_Subscribe(Shared_Attribute_Callback(SharedAttributeCallback));
       } else {
         Serial.println("Failed to connect");
       }
@@ -109,6 +128,20 @@ void taskSendAttribute(void *parameter) {
         tb.sendAttributeData(HUMIDITY_ATTR, humidity);
       }
       vTaskDelay(telemetrySendInterval / portTICK_PERIOD_MS);
+    }
+}
+
+void taskFanControl(void *pvParameters) {
+    pinMode(FAN_PIN, OUTPUT);
+    while (1) {
+        if (temperature > temperature_Threshold) {
+            analogWrite(FAN_PIN, 255);  // Bật quạt
+            Serial.println("Fan ON");
+        } else {
+            analogWrite(FAN_PIN, 0);  // Tắt quạt
+            Serial.println("Fan OFF");
+        }
+        vTaskDelay(1000 / portTICK_PERIOD_MS); // Kiểm tra mỗi giây
     }
 }
 

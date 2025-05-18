@@ -11,12 +11,12 @@ function PopUpBox({ name, close }) {
         }
       
         const payload = {
-          [name.toLowerCase()]: parseFloat(value),
-          timestamp: new Date().toISOString().replace("T", " ").split(".")[0]
+          [name.toLowerCase() + "_Threshold"]: parseFloat(value),
+          //timestamp: new Date().toISOString().replace("T", " ").split(".")[0]
         };
       
         try {
-          const response = await fetch("http://localhost:5000/api/send-data", {
+          const response = await fetch("http://localhost:5001/api/send-data", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload)
@@ -24,6 +24,7 @@ function PopUpBox({ name, close }) {
       
           const result = await response.json();
           alert(result.message || result.error);
+          console.log(payload);
       
           if (typeof refresh === "function") refresh(); // <== Call this!
           close();

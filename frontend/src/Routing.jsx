@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/home/home";
 import AboutUs from "./pages/about-us/aboutus";
 import ContactUsPage from "./pages/contact/contact";
-import SignUpPage from "./pages/signup";
-import SignInPage from "./pages/loginpage";
+import SignUpPage from "./pages/authentication/signup";
+import SignInPage from "./pages/authentication/loginpage";
 import Dashboard from "./pages/dashboard/dashboard";
 import Fridge from "./pages/fridge/fridge";
 

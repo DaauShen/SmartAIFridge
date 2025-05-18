@@ -4,7 +4,7 @@ export default function ImageDisplay() {
   const [img, setImg] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/images")
+    fetch("http://localhost:5001/api/images")
       .then((res) => res.json())
       .then((data) => setImg(data.base64));
   }, []);

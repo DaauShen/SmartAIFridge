@@ -8,7 +8,7 @@ export default function LineChartComponent({close}) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/fridge/history")
+    fetch("http://localhost:5001/api/fridge/history")
       .then((res) => res.json())
       .then((data) =>
         setData(
