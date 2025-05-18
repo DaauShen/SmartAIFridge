@@ -53,6 +53,7 @@ function Dashboard(){
                 {/* Image: Realtime image */}
                 <div className = "image-container">
                     <img src = {`data:image/jpeg;base64,${img}`} alt = "Smart Fridge" className = "fridge-image"></img>
+                    <img src = {`data:image/jpeg;base64,${img}`} alt = "Smart Fridge" className = "fridge-image"></img>
                     <p style={{fontStyle: "italic"}}>Updated at {timestamp}</p>
                     <button className = "go-to-fridge">Go to “Fridge”</button>
                 </div>
