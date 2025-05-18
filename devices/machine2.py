@@ -9,7 +9,7 @@ import threading
 
 # Cấu hình ThingsBoard
 THINGSBOARD_HOST = "app.coreiot.io"  # Thay bằng hostname của bạn
-ACCESS_TOKEN = "ZfAO9lxFLkRdKbytaaCu"  # Thay bằng access token của bạn
+ACCESS_TOKEN = "your_access_token"  # Thay bằng access token của bạn
 
 # API để lấy ảnh và attributes từ ThingsBoard
 THINGSBOARD_URL_IMAGE = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes?clientKeys=image"

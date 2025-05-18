@@ -1,0 +1,123 @@
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter-Regular", Helvetica;
+}
+
+body {
+  font-family: "Inter-Regular", Helvetica;
+  background-color: #F1F8F2;
+}
+
+.fridge-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; 
+  width: 90%;
+  margin: 70px auto;
+}
+
+/* Image */
+
+.fridge-container .image-container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} 
+
+.fridge-container .image-container .fridge-image {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10% 0 3% 0;
+  justify-content: left;
+}
+
+/* Tables */
+
+.fridge-container .display-table {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 90%;
+    height: auto;
+    margin: 50px 0px 50px 20px;
+  }
+
+.fridge-container .vegetable-table,
+.fridge-container .popupbox {
+  width: 100%;
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px 20px 30px;
+} 
+
+.fridge-container table {
+  width: 100%;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+    font-size: 16px;
+    padding: 10px 15px;
+    justify-content: center;
+    text-align: center;
+}
+
+.fridge-container table tr:not(:last-child) td {
+  border-bottom: 1.5px solid #060606;
+}
+
+th {
+    color: white;
+    background-color: black;
+}
+
+td {
+    color: black;
+    background-color: white;
+}
+
+.fridge-container .vegetable-table .see-btn {
+  padding: 5px 25px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.fridge-container .vegetable-table .see-btn:hover {
+  background-color: #858788;
+}
+
+.fridge-container .display-table .popup-overlay {
+  position: fixed;
+  inset: 0px;
+  display: flex;
+  pointer-events: auto;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+}
+
+/* .fridge-container .display-table  .popupbox{
+  width: 424px;
+  height: 254px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 black;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  display: flex;
+  z-index: 1000;
+} */

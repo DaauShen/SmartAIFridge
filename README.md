@@ -3,7 +3,7 @@ Hướng dẫn cài đặt:
 - Clone/Pull git về
 - Mở cmd trong folder
 - Chạy lệnh ```cd frontend``` rồi ```npm install```
-- Mở cmd khác, chạy lệnh ```cd backed``` rồi ```npm install```
+- Mở cmd khác, chạy lệnh ```cd backend``` rồi ```npm install```
 - Trong cmd backend, chạy lệnh ```node server.js``` để chạy server backend trước (nhớ cài Nodejs)
 - Trong cmd frontend, chạy lệnh ```npm run dev``` để chạy server frontend (nó sẽ hiện 1 cái link trong cmd, ctrl + click vào để đi tới web)
 

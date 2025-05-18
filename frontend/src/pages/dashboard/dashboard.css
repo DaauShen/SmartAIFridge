@@ -1,0 +1,167 @@
+* 
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter-Regular", Helvetica;
+}
+
+body, html {
+  font-family: "Inter-Regular", Helvetica;
+  background-color: #F1F8F2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.dashboard-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 30px;
+  width: 90%;
+  margin: 70px auto;
+}
+
+.dashboard-container .image-container,
+.dashboard-container .big-logo,
+.dashboard-container .status{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+} 
+
+/* Image container */
+
+.dashboard-container .image-container .fridge-image {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10% 0 3% 0;
+  justify-content: left;
+}
+
+.dashboard-container .go-to-fridge {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.dashboard-container .go-to-fridge:hover {
+  background-color: #424648;
+}
+
+/* Status */
+.dashboard-container .status{
+  padding-top: 80px;
+  width: 100%;
+  margin: 0 auto;
+} 
+
+.dashboard-container .status .temperature, .dashboard-container .status .humidity {
+  background-color: #fff;
+  padding: 5px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 4px 0 rgba(4, 4, 4, 0.1);
+  width: 225px;
+  height: 128px;
+  align-items: center;
+  margin: 0px auto 50px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.dashboard-container .status .top, .dashboard-container .status .bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.dashboard-container .status button{
+  display: block;
+  margin: auto;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  cursor: pointer;
+}
+
+.dashboard-container .status .label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-right: auto;
+}
+
+.dashboard-container .status .value {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: auto;
+}
+
+/* Big logo */
+.dashboard-container .big-logo img{
+  width: 110%;
+  height: 110%;
+  margin: auto;
+  object-fit: contain;
+}
+
+
+/* @media (max-width: 1200px) {
+  .big-logo {
+    display: none;
+  }
+
+  .container {
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+  }
+
+  .image-container,
+  .status{
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .image-container .fridge-image {
+    width: 100%; 
+    margin: 10px 10px; 
+  }
+
+  .status .temperature,
+  .status .humidity {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+  }
+
+  .status .label {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  .status .value {
+    font-size: 25px;
+    font-weight: bold;
+  }
+} */
