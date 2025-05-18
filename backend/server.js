@@ -56,16 +56,16 @@ async function fetchAndSaveData() {
 }
 
 fetchAndSaveData();
-setInterval(fetchAndSaveData, 5000);
+setInterval(fetchAndSaveData, 1000);
 
 
 app.post('/api/send-data', async (req, res) => {
   const data = req.body;
 
   // Add timestamp if not present
-  if (!data.timestamp) {
+  /*if (!data.timestamp) {
     data.timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
-  }
+  }*/
 
   try {
     const response = await axios.post(ATTRIBUTES_URL, data, {

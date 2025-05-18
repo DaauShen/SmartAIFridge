@@ -1,7 +1,7 @@
 import React from "react";
-import Footer from "../components/footer";
-import NavBar1 from "../components/navbar";
-import SignInBox from "../components/signin"
+import Footer from "../../components/footer";
+import NavBar1 from "../../components/navbar";
+import SignInBox from "../../components/signin"
 
 function SignInPage(){
     return (
