@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import "./fridge.css";
-import Navbar2 from "../../components/navbar2";
-import Footer from "../../components/footer";
+import Navbar2 from "../../components/navbar/navbar2";
+import Footer from "../../components/footer/footer";
 
 export default function Fridge() {
   const [img, setImg] = useState(null);
