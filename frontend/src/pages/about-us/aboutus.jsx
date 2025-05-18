@@ -7,8 +7,8 @@ import team from "../../assets/images/team.png"
 function AboutUsPage(){
     return (
         <div>
-        <NavBar1/>
-        <main style={{ backgroundColor: "#eaf7ea", minHeight: "100vh", padding: "2rem 0" }}>
+            <NavBar1/>
+            <main style={{ backgroundColor: "#EAF7EA", height: "100vh", padding: "2rem 0" }}>
                 <div className="aboutus">
                     <img src={BKU} alt="HCMUT" />
                     <div className="faculty">FACULTY OF COMPUTER SCIENCE AND ENGINEERING</div>
@@ -17,8 +17,8 @@ function AboutUsPage(){
                         <img src={team} alt="team members"/>
                     </div>
                 </div>
-        </main>
-        <Footer/>
+            </main>
+            <Footer/>
         </div>
 
     )

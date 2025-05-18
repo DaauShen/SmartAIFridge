@@ -7,7 +7,7 @@
   color: black;
   padding: 40px 60px;
   font-family: 'Quicksand', sans-serif;
-  margin-top: 120px;
+  /* margin-top: 120px; */
   display: flex;
   flex-direction: column;
 }
