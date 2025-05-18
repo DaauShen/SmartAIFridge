@@ -4,7 +4,7 @@ export default function CountCard() {
   const [counts, setCounts] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/counts")
+    fetch("http://localhost:5001/api/counts")
       .then((res) => res.json())
       .then((data) => setCounts(data.values));
   }, []);

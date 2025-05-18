@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import Popup from 'reactjs-popup';
 import "./dashboard.css";
 import Navbar2 from "../../components/navbar2";
@@ -9,25 +10,25 @@ import image from "../../../../devices/received_images/mypic.jpg";
 import big_logo from "../../assets/images/big_logo.png"
 
 function Dashboard(){
-    // Popup setting box
+    const navigate = useNavigate();
     const [img, setImg] = useState(null);
     const [temperature, setTemperature] = useState(null);
     const [humidity, setHumidity] = useState(null);
 
     useEffect(() => {
         fetchFridgeData(); // first load
-        const interval = setInterval(fetchFridgeData, 5000); // every 5s
+        const interval = setInterval(fetchFridgeData, 1000); // every 1s
         return () => clearInterval(interval); // cleanup
       }, []);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/images")
+        fetch("http://localhost:5001/api/images")
         .then((res) => res.json())
         .then((data) => setImg(data.base64));
     }, []);
 
     const fetchFridgeData = () => {
-        fetch("http://localhost:5000/api/fridge")
+        fetch("http://localhost:5001/api/fridge")
           .then((res) => res.json())
           .then((data) => {
             if (data) {
@@ -54,7 +55,7 @@ function Dashboard(){
                 <div className = "image-container">
                     <img src = {`data:image/jpeg;base64,${img}`} alt = "Smart Fridge" className = "fridge-image"></img>
                     <p style={{fontStyle: "italic"}}>Updated at {timestamp}</p>
-                    <button className = "go-to-fridge">Go to “Fridge”</button>
+                    <button className = "go-to-fridge" onClick = {() => navigate('/fridge')}>Go to “Fridge”</button>
                 </div>
 
                 {/* Status: Temperature and humidity */}
@@ -62,7 +63,7 @@ function Dashboard(){
                     <div className = "temperature">
                         <div className = "top">
                             <div className = "label">Temperature</div>
-                            <div className = "value">{temperature != null ? `${temperature}°C` : "Loading..."}</div>
+                            <div className = "value">{temperature != null ? `${parseFloat(temperature).toFixed(2)}°C` : "Loading..."}</div>
                         </div>
                         <div className = "bottom">
                             <Popup modal trigger = {<button> Setting </button>}>
@@ -73,7 +74,7 @@ function Dashboard(){
                     <div className = "humidity">
                         <div className = "top">
                             <div className = "label">Humidity</div>
-                            <div className = "value">{humidity != null ? `${humidity}%` : "Loading..."}</div>
+                            <div className = "value">{humidity != null ? `${parseFloat(humidity).toFixed(2)}%` : "Loading..."}</div>
                         </div>
                         <div className = "bottom">
                             <Popup modal trigger = {<button> Setting </button>}>

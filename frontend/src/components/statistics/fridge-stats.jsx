@@ -4,7 +4,7 @@ export default function FridgeStats() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/fridge")
+    fetch("http://localhost:5001/api/fridge")
       .then((res) => res.json())
       .then((json) => setData(json))
       .catch((err) => console.error("Lỗi lấy dữ liệu từ API:", err));
