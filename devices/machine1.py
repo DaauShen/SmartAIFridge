@@ -10,7 +10,7 @@ from ultralytics import YOLO  # Thư viện YOLO
 
 # Cấu hình ThingsBoard
 THINGSBOARD_HOST = "app.coreiot.io"  # Thay bằng hostname của bạn
-ACCESS_TOKEN = "your_access_token"  # Thay bằng access token của bạn
+ACCESS_TOKEN = "ZfAO9lxFLkRdKbytaaCu"  # Thay bằng access token của bạn
 THINGSBOARD_URL = f"http://{THINGSBOARD_HOST}/api/v1/{ACCESS_TOKEN}/attributes"
 
 # Cấu hình stream từ ESP32-CAM
@@ -21,7 +21,7 @@ MODEL_PATH = "model/last.pt"
 model = YOLO(MODEL_PATH)
 
 # Thư mục lưu ảnh
-SAVE_DIR = "pub_pics"
+SAVE_DIR = "received_images"
 os.makedirs(SAVE_DIR, exist_ok=True)  # Tạo thư mục nếu chưa tồn tại
 
 def get_frame_from_stream():
@@ -63,7 +63,7 @@ def detect_objects(image):
 def save_image(image):
     """Lưu ảnh vào thư mục pub_pics với tên theo timestamp"""
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"{SAVE_DIR}/detected_obj.jpg"
+    filename = f"{SAVE_DIR}/{timestamp}.jpg"
     cv2.imwrite(filename, image)  # Lưu ảnh
     return filename  # Trả về đường dẫn ảnh
 
@@ -99,11 +99,12 @@ def main():
                 frame = cv2.resize(frame, (800, 600), interpolation=cv2.INTER_LINEAR)
                 frame, object_counts = detect_objects(frame)  # Chạy YOLO nhận diện và đếm số lượng
                 
-                # Lưu ảnh vào thư mục pub_pics
-                image_path = save_image(frame)
-                print(f"Ảnh đã lưu tại: {image_path}")
+                # # Lưu ảnh vào thư mục pub_pics
+                # image_path = save_image(frame)
+                # print(f"Ảnh đã lưu tại: {image_path}")
 
                 # Mã hóa ảnh thành base64 để gửi lên ThingsBoard
+                print(object_counts)
                 img_base64 = encode_image_to_base64(frame)
                 send_data_to_thingsboard(session, img_base64, object_counts)
             else:
