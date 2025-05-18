@@ -111,6 +111,31 @@ app.post('/api/send-data', async (req, res) => {
   }
 });
 
+app.post("/api/light", async (req, res) => {
+  const { state } = req.body; // expects: { state: true } or { state: false }
+
+  try {
+    const response = await axios.post(
+      `http://${THINGSBOARD_HOST}/api/v1/${ACCESS_TOKEN}/attributes`,
+      { light: state }, // send light state
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      res.json({ message: `Đèn đã ${state ? "bật" : "tắt"}` });
+    } else {
+      res.status(response.status).json({ error: response.data });
+    }
+  } catch (err) {
+    res.status(500).json({ error: `Lỗi gửi trạng thái đèn: ${err.message}` });
+  }
+});
+
+
 
 app.get("/api/images", async (req, res) => {
   const img = await Image.findOne().sort({ timestamp: -1 });
