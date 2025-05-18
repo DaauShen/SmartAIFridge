@@ -34,6 +34,7 @@ async function fetchAndSaveData() {
     }
 
     const clientData = attrRes.data?.client || {};
+
     if (clientData.object_counts != null && typeof clientData.object_counts === "object") {
       await Count.create({ values: clientData.object_counts });
     }
@@ -46,6 +47,8 @@ async function fetchAndSaveData() {
       });
     }
 
+    
+
     console.log("✅ Dữ liệu đã lưu vào MongoDB");
   } catch (err) {
     console.error("❌ Lỗi fetch/lưu:", err.message);
@@ -54,6 +57,33 @@ async function fetchAndSaveData() {
 
 fetchAndSaveData();
 setInterval(fetchAndSaveData, 5000);
+
+
+app.post('/api/send-data', async (req, res) => {
+  const data = req.body;
+
+  // Add timestamp if not present
+  if (!data.timestamp) {
+    data.timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
+  }
+
+  try {
+    const response = await axios.post(ATTRIBUTES_URL, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.status === 200) {
+      res.json({ message: 'Dữ liệu đã gửi lên ThingsBoard!' });
+    } else {
+      res.status(response.status).json({ error: response.data });
+    }
+  } catch (err) {
+    res.status(500).json({ error: `Lỗi gửi dữ liệu: ${err.message}` });
+  }
+});
+
 
 app.get("/api/images", async (req, res) => {
   const img = await Image.findOne().sort({ timestamp: -1 });

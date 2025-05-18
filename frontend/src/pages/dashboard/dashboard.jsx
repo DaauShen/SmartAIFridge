@@ -11,12 +11,38 @@ import big_logo from "../../assets/images/big_logo.png"
 function Dashboard(){
     // Popup setting box
     const [img, setImg] = useState(null);
+    const [temperature, setTemperature] = useState(null);
+    const [humidity, setHumidity] = useState(null);
+
+    useEffect(() => {
+        fetchFridgeData(); // first load
+        const interval = setInterval(fetchFridgeData, 5000); // every 5s
+        return () => clearInterval(interval); // cleanup
+      }, []);
 
     useEffect(() => {
         fetch("http://localhost:5000/api/images")
         .then((res) => res.json())
         .then((data) => setImg(data.base64));
     }, []);
+
+    const fetchFridgeData = () => {
+        fetch("http://localhost:5000/api/fridge")
+          .then((res) => res.json())
+          .then((data) => {
+            if (data) {
+              setTemperature(data.temperature);
+              setHumidity(data.humidity);
+            }
+          });
+      };
+      
+
+    useEffect(() => {
+        fetchFridgeData();
+    }, []);
+      
+
 
     // Fetch data from database 
     const timestamp = "TIMESTAMP";
@@ -36,22 +62,22 @@ function Dashboard(){
                     <div className = "temperature">
                         <div className = "top">
                             <div className = "label">Temperature</div>
-                            <div className = "value">20°C</div>
+                            <div className = "value">{temperature != null ? `${temperature}°C` : "Loading..."}</div>
                         </div>
                         <div className = "bottom">
                             <Popup modal trigger = {<button> Setting </button>}>
-                                {close => <PopUpBox name = "Temperature" close = {close} />}
+                                {close => <PopUpBox name = "Temperature" close = {close} refresh={fetchFridgeData} />}
                             </Popup>
                         </div>
                     </div>
                     <div className = "humidity">
                         <div className = "top">
                             <div className = "label">Humidity</div>
-                            <div className = "value">50%</div>
+                            <div className = "value">{humidity != null ? `${humidity}%` : "Loading..."}</div>
                         </div>
                         <div className = "bottom">
                             <Popup modal trigger = {<button> Setting </button>}>
-                                {close => <PopUpBox name = "Humidity" close = {close} />}
+                                {close => <PopUpBox name = "Humidity" close = {close} refresh={fetchFridgeData}/>}
                             </Popup>
                         </div>
                     </div>
