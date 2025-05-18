@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./home.css"
-import NavBar1 from "../../components/navbar";
+import NavBar1 from "../../components/navbar/navbar";
 import img from "../../assets/images/homepageimage.png";
-import HomeFooter from "../../components/homefooter";
+import Footer from "../../components/footer/footer";
 
 function HomePage(){
     const navigate = useNavigate();
@@ -16,14 +16,13 @@ function HomePage(){
     };
 
     return (
-        <div className="after">
+        <div className = "after">
             <NavBar1/>
             <div className="background">
                 <div className="title">Smart Fridge System</div>
                 <div className="manage">Manage your fridge efficiently</div>
                 <div className="whitetext">System for supporting smart camera integrates with your fridge.</div>
                 <button className="discoverbutton" onClick={handleDiscoverClick}>Discover</button>
-                {/* <span className="word-rotate"></span> */}
             </div>
             <div className="infobox" ref = {infoboxRef}>
                 <div className="whitebox">
@@ -34,14 +33,13 @@ function HomePage(){
                     </div>
                     <button className="butt" onClick = {() => navigate("/aboutus")}>About us</button>
                 </div>
-
                 <div className="transparentbox">
                     <div className="tracking">Tracking your fridge remotely.</div>
                     <div className="item">fridge moisture               |               vegetables              |               fridge temperature</div>
                     <div className="attr">  efficiently                                    faster                                   efficiently   </div>
                 </div>
             </div>
-            <HomeFooter />
+            <Footer />
         </div>
     )
 }

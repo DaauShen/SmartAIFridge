@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar1 from "../../components/navbar";
-import Footer from "../../components/footer";
-import ContactUs from "../../components/contactus"
+import NavBar1 from "../../components/navbar/navbar";
+import Footer from "../../components/footer/footer";
+import ContactUs from "../../components/contact-us/contactus"
 import "../home/home.css"
 import contact from "../../assets/images/contact.png"
 function ContactUsPage(){

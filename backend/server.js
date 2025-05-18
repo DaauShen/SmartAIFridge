@@ -56,7 +56,34 @@ async function fetchAndSaveData() {
 }
 
 fetchAndSaveData();
-setInterval(fetchAndSaveData, 5000);
+setInterval(fetchAndSaveData, 1000);
+
+
+app.post('/api/send-data', async (req, res) => {
+  const data = req.body;
+
+  // Add timestamp if not present
+  /*if (!data.timestamp) {
+    data.timestamp = new Date().toISOString().replace('T', ' ').split('.')[0];
+  }*/
+
+  try {
+    const response = await axios.post(ATTRIBUTES_URL, data, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.status === 200) {
+      res.json({ message: 'Dữ liệu đã gửi lên ThingsBoard!' });
+    } else {
+      res.status(response.status).json({ error: response.data });
+    }
+  } catch (err) {
+    res.status(500).json({ error: `Lỗi gửi dữ liệu: ${err.message}` });
+  }
+});
+
 
 
 app.post('/api/send-data', async (req, res) => {
@@ -83,6 +110,31 @@ app.post('/api/send-data', async (req, res) => {
     res.status(500).json({ error: `Lỗi gửi dữ liệu: ${err.message}` });
   }
 });
+
+app.post("/api/light", async (req, res) => {
+  const { state } = req.body; // expects: { state: true } or { state: false }
+
+  try {
+    const response = await axios.post(
+      `http://${THINGSBOARD_HOST}/api/v1/${ACCESS_TOKEN}/attributes`,
+      { light: state }, // send light state
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (response.status === 200) {
+      res.json({ message: `Đèn đã ${state ? "bật" : "tắt"}` });
+    } else {
+      res.status(response.status).json({ error: response.data });
+    }
+  } catch (err) {
+    res.status(500).json({ error: `Lỗi gửi trạng thái đèn: ${err.message}` });
+  }
+});
+
 
 
 app.get("/api/images", async (req, res) => {
@@ -128,6 +180,7 @@ app.post("/api/register", async (req, res) => {
 
   res.status(201).json({ message: "Đăng ký thành công" });
 });
+
 
 // ĐĂNG NHẬP NGƯỜI DÙNG
 app.post("/api/login", async (req, res) => {
