@@ -35,6 +35,25 @@ body {
   justify-content: left;
 }
 
+.fridge-container .image-container .light-on-btn, .fridge-container .image-container .light-off-btn{
+  margin-top: 15px;
+  padding: 5px 25px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: solid 1.5px black;
+  cursor: pointer;
+}
+
+.fridge-container .image-container .light-on-btn {
+  background-color: #f4f6a9;
+  color: black;
+}
+
+.fridge-container .image-container .light-off-btn {
+  background-color: #040404;
+  color: rgb(255, 255, 255);
+}
+
 /* Tables */
 
 .fridge-container .display-table {

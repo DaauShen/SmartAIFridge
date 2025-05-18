@@ -8,6 +8,7 @@ import Footer from "../../components/footer";
 export default function Fridge(){
     const [img, setImg] = useState(null);
     const [seeButton, setSeeButton] = useState(null);
+    const [light, SetLight] = useState(null);
 
     /* Fetch image */
 
@@ -42,6 +43,12 @@ export default function Fridge(){
                 <div className = "image-container">
                     {img && <img src={`data:image/jpeg;base64,${img}`} alt="IoT Image" className = "fridge-image" />}
                     <p style={{fontStyle: "italic"}}>Updated at {timestamp}</p>
+                    <button
+                        onClick = {() => SetLight(!light)}
+                        className = {light ? "light-on-btn" : "light-off-btn"}
+                    >
+                        {light ? "Light: On" : "Light: Off"}
+                    </button>
                 </div>
 
                 {/* Tables */}
