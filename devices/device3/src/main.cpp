@@ -19,14 +19,17 @@ constexpr uint16_t THINGSBOARD_PORT = 1883U;
 constexpr uint32_t MAX_MESSAGE_SIZE = 1024U;
 constexpr uint32_t SERIAL_DEBUG_BAUD = 115200U;
 
-constexpr char LED_STATE_ATTR[] = "ledState";
+constexpr char LED_STATE_ATTR[] = "light";
 constexpr char TEMP_ATTR[] = "temperature";
 constexpr char HUMIDITY_ATTR[] = "humidity";
+constexpr char TEMP_THRESHOLD_ATTR[] = "temperature_Threshold";
+constexpr char HUMIDITY_THRESHOLD_ATTR[] = "humidity_Threshold";
 
 volatile bool attributesChanged = false;
 volatile bool ledState = false;
+volatile bool sharedAttributesReceived = false;
 float temperature = 0.0, humidity = 0.0;
-float temperature_Threshold = 10.0;
+float temperature_Threshold = 40.0;
 float humidity_Threshold = 70.0;
 
 constexpr int16_t telemetrySendInterval = 1000U;
@@ -41,16 +44,26 @@ void taskDHT20(void *pvParameters);
 void taskSendAttribute(void *pvParameters);
 void taskFanControl(void *pvParameters);
 
-void SharedAttributeCallback(const Shared_Attribute_Data &data) {
-    if (data.containsKey("temperature_Threshold")) {
-        temperature_Threshold = data["temperature_Threshold"];
-        Serial.print("Updated temperature_Threshold: ");
-        Serial.println(temperature_Threshold);
-    }
-    if (data.containsKey("humidity_Threshold")) {
-        humidity_Threshold = data["humidity_Threshold"];
-        Serial.print("Updated humidity_Threshold: ");
-        Serial.println(humidity_Threshold);
+constexpr std::array<const char *, 3U> SHARED_ATTRIBUTES_LIST = {
+  LED_STATE_ATTR,
+  TEMP_THRESHOLD_ATTR,
+  HUMIDITY_THRESHOLD_ATTR
+};
+
+void processSharedAttributes(const Shared_Attribute_Data &data) {
+    Serial.println("Received Shared Attributes:");
+    for (auto it = data.begin(); it != data.end(); ++it) {
+        if (strcmp(it->key().c_str(), LED_STATE_ATTR) == 0) {
+            ledState = it->value().as<bool>();
+            digitalWrite(LED_PIN, ledState ? HIGH : LOW);
+            Serial.printf("LED State: %s\n", ledState ? "ON" : "OFF");
+        } else if (strcmp(it->key().c_str(), TEMP_THRESHOLD_ATTR) == 0) {
+            temperature_Threshold = it->value().as<float>();
+            Serial.printf("Temperature Threshold: %.2f\n", temperature_Threshold);
+        } else if (strcmp(it->key().c_str(), HUMIDITY_THRESHOLD_ATTR) == 0) {
+            humidity_Threshold = it->value().as<float>();
+            Serial.printf("Humidity Threshold: %.2f\n", humidity_Threshold);
+        }
     }
 }
 
@@ -80,6 +93,8 @@ void setup() {
     xTaskCreate(taskFanControl, "taskFanControl", 2048, NULL, 1, NULL);
 }
 
+const Shared_Attribute_Callback attributes_callback(&processSharedAttributes, SHARED_ATTRIBUTES_LIST.cbegin(), SHARED_ATTRIBUTES_LIST.cend());
+
 // Task 1: Quản lý kết nối đến ThingsBoard
 void taskThingsBoard(void *parameter) {
   while (true) {
@@ -87,13 +102,20 @@ void taskThingsBoard(void *parameter) {
       Serial.println("Connecting to ThingsBoard...");
       if (tb.connect(THINGSBOARD_SERVER, TOKEN, THINGSBOARD_PORT)) {
         Serial.println("Connected to ThingsBoard");
-        tb.Shared_Attributes_Subscribe(Shared_Attribute_Callback(SharedAttributeCallback));
+        sharedAttributesReceived = tb.Shared_Attributes_Subscribe(attributes_callback);
+
+        if (sharedAttributesReceived) {
+          Serial.println("Subscribed to shared attributes");
+        } else {
+          Serial.println("Failed to subscribe to shared attributes");
+        }
+        
       } else {
         Serial.println("Failed to connect");
       }
     }
     tb.loop();
-    vTaskDelay(1000);
+    vTaskDelay(10 / portTICK_PERIOD_MS);
   }
 }
 
@@ -118,6 +140,7 @@ void taskDHT20(void *parameter) {
 void taskSendAttribute(void *parameter) {
     for (;;) {
       if (tb.connected()) {
+        ledState = 1 - ledState; // Chuyển đổi trạng thái LED
         Serial.print("Sending Data - Temp: ");
         Serial.print(temperature);
         Serial.print(" °C, Humidity: ");
