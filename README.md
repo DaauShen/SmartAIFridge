@@ -45,8 +45,8 @@ This is a university project, we want to make a system that have imbedded camera
 - Clone/Pull this project to your local host.
 - Open the terminal in the main folder
 - Go to the frontend folder and install all needed packages
-      ```cd frontend```
-      ```npm install```
+      <br>```cd frontend```
+      <br>```npm install```
 - Go to the backend folder and install all needed packages
       ```cd ../backend```
       ```npm install```
