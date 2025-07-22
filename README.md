@@ -21,7 +21,7 @@
 This is a university project, we want to make a system that have imbedded camera to track the foods inside fridge (mainly the fruits and vegetables). We used the Yolov8 model to segmentation and predict the fruits and vegetables. About the application, we use 2 technologies in development: NodeJS and ReactJS with Vite which helps us associates frontend and backend. The database management system we used is MongoDB, which stores data in JSON format, so it can help us work easily in NodeJS.
 
 <div align="center">
-    <img src="https://skillicons.dev/icons?i=javascript,cplusplus,python,react,nodejs,vite,mongodb" />
+    <img src="https://skillicons.dev/icons?i=javascript,python,react,nodejs,vite,mongodb" />
 </div>
 
 ## About our team
