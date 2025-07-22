@@ -29,32 +29,32 @@ This is a university project, we want to make a system that have imbedded camera
     <tr>
         <th>No</th>
         <th>Name</th>
-        <th>Task</th>
+        <th>Role</th>
     </tr>
     <tr>
         <td>1</td>
         <td>Dinh Ba Khanh</td>
-        <td>Do the frontend task, design in Figma</td>
+        <td>Frontend</td>
     </tr>
     <tr>
         <td>2</td>
         <td>Tran Nguyen Anh Khoa</td>
-        <td>Do the frontend task</td>
+        <td>Frontend</td>
     </tr>
     <tr>
         <td>3</td>
         <td>Nong Thuc Khue</td>
-        <td>Do the frontend task</td>
+        <td>Frontend</td>
     </tr>
     <tr>
         <td>4</td>
         <td>Nguyen Hao Hong Du</td>
-        <td>Do the backend task</td>
+        <td>Backend</td>
     </tr>
     <tr>
         <td>5</td>
         <td>Nguyen Huy Tai</td>
-        <td>Do the IoT task</td>
+        <td>IoT</td>
     </tr>
 </table>
 
