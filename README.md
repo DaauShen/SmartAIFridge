@@ -40,6 +40,7 @@ This is a university project, we want to make a system that have imbedded camera
         <td>IoT</td>
     </tr>
 </table>
+
 ## How to install needed package
 - Clone/Pull this project to your local host.
 - Open the terminal in the main folder
